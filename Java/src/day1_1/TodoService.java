@@ -10,10 +10,12 @@ public class TodoService {
 	public void save(Todo todo) {
 		list.add(todo);
 	}
+	
 	// 할일 목록
 	public ArrayList<Todo> findAll() {
 		return list;
 	}
+	
 	// 할일 삭제
 	public int delete(Long tno) {
 		for(Todo t:list) {
@@ -25,6 +27,15 @@ public class TodoService {
 		}
 		return 0;
 	}
+	
 	// 할일 변경
-
+	public Long change(Long tno) {
+		for(Todo t:list) {
+			if(t.getTno()==tno) {
+				t.setFinish(!t.getFinish());
+				return 1L;
+			}
+		}
+		return 0L;
+	}
 }
